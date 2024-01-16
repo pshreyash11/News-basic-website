@@ -68,6 +68,16 @@ function onNavItemClick(id){
 const searchButton = document.getElementById('search-button');
 const searchText = document.getElementById('search-text');
 
+searchText.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+        const query = searchText.value;
+        if(!query)return;
+        fetchNews(query);
+        currentSelectedNav?.classList.remove('active');
+        currentSelectedNav = null;
+    }
+})
+
 searchButton.addEventListener('click' , ()=>{
     const query = searchText.value;
     if(!query)return;
